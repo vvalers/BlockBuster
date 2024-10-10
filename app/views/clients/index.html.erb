@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="container">
+  <h1>Clientes</h1>
+
+  <%= link_to "Nuevo Cliente", new_client_path, class: "btn btn-primary mb-3" %>
+
+<div class="container">
+  <div id="clients">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Usuario</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Pelicula arrendada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <%= render client %>
+          <td>
+              <% if client.movies.any? %>
+                <span class="text-success">Tiene película arrendada</span>
+              <% else %>
+                <span class="text-danger">No tiene película arrendada</span>
+              <% end %>
+            </td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
